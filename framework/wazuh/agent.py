@@ -739,7 +739,7 @@ def upgrade_agents(agent_list=None, wpk_repo=None, version=None, force=False, us
     msg['parameters'] = {k: v for k, v in msg['parameters'].items() if v is not None}
     data = core_upgrade_agents(command=msg)
 
-    for agent_result in data:
+    for agent_result in data['data']:
         if agent_result['error'] == 0:
             task_agent = {
                 'agent_id': str(agent_result['agent']).zfill(3),
@@ -784,7 +784,7 @@ def get_upgrade_result(agent_list=None):
     msg['parameters'] = {k: v for k, v in msg['parameters'].items() if v is not None}
     task_results = core_upgrade_agents(command=msg, get_result=True)
 
-    for task_result in task_results:
+    for task_result in task_results['data']:
         task_error = task_result.pop('error')
         if task_error == 0:
             task_result.pop('message')
