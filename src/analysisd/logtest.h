@@ -27,16 +27,32 @@
 #include <time.h>
 
 
-/* JSON REQUEST / RESPONSE fields names */
+/* The JSON's fields of the requests and responses */
+#define w_LOGTEST_JSON_VERSION             "version"    ///< The protocol version
+#define W_LOGTEST_JSON_ORIGIN               "origin"    ///< The origin of the request
+#define w_LOGTEST_JSON_PARAMETERS       "parameters"    ///< The parameter of the request
+#define W_LOGTEST_JSON_DATA                   "data"    ///< The information of the response
+#define W_LOGTEST_JSON_MESSAGE             "message"    ///< Human readable information
+#define W_LOGTEST_JSON_ERROR                 "error"    ///< An error code
+#define W_LOGTEST_JSON_COMMAND             "command"    ///< The task to do
+
+/* Fiels of origins JSON object (field of JSON request) */
+#define W_LOGTEST_JSON_ORIGIN_NAME            "name"    ///< The origin name of the request
+#define W_LOGTEST_JSON_ORIGIN_MODULE        "module"    ///< The origin module of the request
+
+/* Wazuh-logtest's fields names for the requests and responses */
 #define W_LOGTEST_JSON_TOKEN                    "token"   ///< Token field name of json input/output
 #define W_LOGTEST_JSON_EVENT                    "event"   ///< Event field name of json input
 #define W_LOGTEST_JSON_LOGFORMAT           "log_format"   ///< Log format field name of json input
 #define W_LOGTEST_JSON_LOCATION              "location"   ///< Location field name of json input
-#define W_LOGTEST_JSON_REMOVE_SESSION  "remove_session"   ///< Remove session field name of json input
 #define W_LOGTEST_JSON_ALERT                    "alert"   ///< Alert field name of json output (boolean)
 #define W_LOGTEST_JSON_MESSAGES              "messages"   ///< Message format field name of json output
 #define W_LOGTEST_JSON_CODE                   "codemsg"   ///< Code of message field name of json output (number)
 #define W_LOGTEST_JSON_OUTPUT                  "output"   ///< Output field name of json output
+
+/* Commands allowed */
+#define W_LOGTEST_COMMAND_REMOVE_SESSION   "remove_session"    ///< Command used to remove a session
+#define W_LOGTEST_COMMAND_LOG_PROCESSING   "log_processing"    ///< Command used to log processing
 
 #define W_LOGTEST_TOKEN_LENGH                 8   ///< Lenght of token
 #define W_LOGTEST_ERROR_JSON_PARSE_NSTR      20   ///< Number of characters to show in parsing error
